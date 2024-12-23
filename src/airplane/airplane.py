@@ -58,6 +58,11 @@ class Airplane:
         raise NotImplementedError("Fourier series not implemented yet")
     
 
+    def abs_lift(self, a: list[float]) -> float:
+        return self._integrate(self._abs_polinomial, -1, 1, a)
+
+    
+
     def plot_lift(self, a: list[float]):
         x = np.linspace(-1, 1, 100)
         y = self._polinomial(x, a)
@@ -99,6 +104,10 @@ class Airplane:
         Moment of the polinomial.
         """
         return self._polinomial(x, a)*(x+1) # NOTE: x+1 se pone porque la integral va de -1 a 1. Revisar si es correcto
+    
+
+    def _abs_polinomial(self, x : float | np.ndarray, a: list[float]) -> float:
+        return abs(self._polinomial(x, a))
             
 
         
