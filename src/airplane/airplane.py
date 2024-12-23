@@ -17,7 +17,6 @@ import warnings
 
 class Airplane:
     def __init__(self, mass: float, wingspan: float):
-        warnings.warn("Units are not well defined. Results have to be checked", UserWarning)
 
         self.mass = mass
         self.weight = mass * 9.8
@@ -29,7 +28,7 @@ class Airplane:
 
     def lift_poli(self, a: list[float]) -> float:
         """
-        Integrate the lift distribution in the wing. The lift distribution is a 4th degree polinomial.
+        Integrate the lift distribution in the wing. The lift distribution is a 4th degree polinomial. Units: [N/Wingspan]
 
         Args:
         a: list of 4 floats. Coefficients of the polinomial in the form a[0]*x**4 + a[1]*x**3 + a[2]*x**2 + a[3]*x
@@ -41,7 +40,7 @@ class Airplane:
     
     def moment_poli(self, a: list[float]) -> float:
         """
-        Integrate the moment distribution in the wing. The moment distribution is a 4th degree polinomial.
+        Integrate the moment distribution in the wing. The moment distribution is a 4th degree polinomial
 
         Args:
         a: list of 4 floats. Coefficients of the polinomial in the form a[0]*x**4 + a[1]*x**3 + a[2]*x**2 + a[3]*x
@@ -49,7 +48,7 @@ class Airplane:
         Returns:
         float: the result of the integration
         """
-        return self._integrate(self._polinomial_x, -1, 1, a)
+        return self._integrate(self._polinomial_x, -1, 1, a) * self.wingspan/2
     
 
     def lift_fourier(self, a: list[float]) -> float:
