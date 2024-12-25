@@ -4,6 +4,8 @@ import numpy as np
 
 import warnings
 
+from ..kernel import gauss_chebyshev as gc
+
 
 """
             COSAS POR HACER
@@ -28,27 +30,47 @@ class Airplane:
 
     def lift_poli(self, a: list[float]) -> float:
         """
-        Integrate the lift distribution in the wing. The lift distribution is a 4th degree polinomial. Units: [N/Wingspan]
+        Integrate the lift distribution in the wing. The moment distribution can be a polynomial of variable degree.
 
         Args:
-        a: list of 4 floats. Coefficients of the polinomial in the form a[0]*x**4 + a[1]*x**3 + a[2]*x**2 + a[3]*x
+        a: list of floats. Coefficients of the polynomial in the form a[i]*x**(i+1)
 
         Returns:
         float: the result of the integration
         """
         return self._integrate(self._polinomial, -1, 1, a)
     
+
+
+    def lift_poli_fortran(self, n : int, a: list[float]) -> float:
+        return self._fortran_integrate_lift(n, a)
+    
+
+
     def moment_poli(self, a: list[float]) -> float:
         """
-        Integrate the moment distribution in the wing. The moment distribution is a 4th degree polinomial
+        Integrate the moment distribution in the wing. The moment distribution can be a polynomial of variable degree.
 
         Args:
-        a: list of 4 floats. Coefficients of the polinomial in the form a[0]*x**4 + a[1]*x**3 + a[2]*x**2 + a[3]*x
+        a: list of floats. Coefficients of the polynomial in the form a[i]*x**(i+1)
 
         Returns:
         float: the result of the integration
         """
         return self._integrate(self._polinomial_x, -1, 1, a) * self.wingspan/2
+    
+
+    def moment_poli_fortran(self, n : int, a: list[float]) -> float:
+        """
+        Integrate the moment distribution in the wing. The moment distribution is a 3th degree polinomial
+
+        Args:
+        a: list of 3 floats. Coefficients of the polinomial in the form a[0]*x**3 + a[1]*x**2 + a[2]*x
+
+        Returns:
+        float: the result of the integration
+        """
+        return self._fortran_integrate_moment(n, a) * self.wingspan/2
     
 
     def lift_fourier(self, a: list[float]) -> float:
@@ -127,6 +149,12 @@ class Airplane:
         float: the result of the integration
         """
         return integrate.quad(f, min, max, args=(coefs))[0]
+    
+    def _fortran_integrate_lift(self, n : int, a: list[float]) -> float:
+        return gc.run_lift(n, a)
+    
+    def _fortran_integrate_moment(self, n : int, a: list[float]) -> float: 
+        return gc.run_mom(n, a)
 
 
     def _check_x(self, x: float) -> bool:

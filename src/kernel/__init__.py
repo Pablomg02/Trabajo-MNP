@@ -1,1 +1,1 @@
-#from .chebyshev_nodes import chebyshev_nodes
+from .gauss_chebyshev import gauss_chebyshev
