@@ -89,12 +89,18 @@ class Airplane:
         x = np.linspace(-1, 1, 100)
         y = self._polinomial(x, a)
         plt.plot(x, y)
+        plt.title("Distribucion de sustentacion")
+        plt.xlabel("Posicion en la envergadura")
+        plt.ylabel("Sustentacion [N]")
         plt.show()
 
     def plot_moment(self, a: list[float]):
         x = np.linspace(-1, 1, 100)
         y = self._polinomial_x(x, a)
         plt.plot(x, y)
+        plt.title("Distribucion de momentos")
+        plt.xlabel("Posición en la envergadura")
+        plt.ylabel("Momento [N*m]")
         plt.show()
 
 

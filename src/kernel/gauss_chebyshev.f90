@@ -1,4 +1,3 @@
-!!! Codigo para calcular los nodos de Chebyshev y los pesos asociados para la cuadratura de Gauss-Chebyshev
 !!! Forma de la integral: f(x) * sqrt(1 - x^2)
 !!! https://en.wikipedia.org/wiki/Chebyshev%E2%80%93Gauss_quadrature
 
@@ -9,6 +8,7 @@
     contains
 
         function run_lift(n, a) result(res)
+            ! Haciendo uso de la distribucion f(x)*sqrt(1-x^2), realiza la integral 
             implicit none
             integer, intent(in) :: n
             real(8) :: res

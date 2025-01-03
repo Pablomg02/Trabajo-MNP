@@ -1,5 +1,5 @@
 !!! Codigo para calcular los nodos de Chebyshev y los pesos asociados para la cuadratura de Gauss-Chebyshev
-!!! Forma de la integral: f(x) / sqrt(1 - x^2)
+!!! Forma de la integral: f(x) * sqrt(1 - x^2)
 !!! https://en.wikipedia.org/wiki/Chebyshev%E2%80%93Gauss_quadrature
 module gauss_chebyshev
     implicit none
