@@ -2,6 +2,9 @@
 !!! https://en.wikipedia.org/wiki/Chebyshev%E2%80%93Gauss_quadrature
 
 
+!!! Para comprender como se ha realizado este codigo, es mejor visualizar las carpetas
+!!! GC_PrimerTipo y GC_SegundoTipo
+
     module gauss_chebyshev
     implicit none
 

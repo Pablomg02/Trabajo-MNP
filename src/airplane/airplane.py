@@ -8,14 +8,12 @@ from ..kernel import gauss_chebyshev as gc
 
 
 """
-            COSAS POR HACER
-        - Revisar las unidades para acabar con newtons 
-        - Impedir que se usen lifts negativos exagerados
-        - Si da tiempo, añadir las series de Fourier
-        - En vez de fourier, se pueden hacer varias aproximaciones polinomicas. Hacerlo todo en una funcion que mida el length de a
-        - Si da tiempo, penalizar el drag inducido para evitar muchisimo lift en la raiz o el lift en la punta
+            COSAS QUE SE PRETENDIAN INTEGRAR:
+        - Añadir series de Fourier en f(x)
+        - Penalizar el drag inducido para evitar demasiado lift en la raiz o el lift en la punta
 """
 
+# (El codigo se ha hecho en ingles por costumbre)
 
 class Airplane:
     def __init__(self, mass: float, wingspan: float):
@@ -25,8 +23,6 @@ class Airplane:
         self.wingspan = wingspan    
 
 
-
-    # NOTE NOTE    Revisar unidades    NOTE NOTE
 
     def lift_poli(self, a: list[float]) -> float:
         """
@@ -102,6 +98,9 @@ class Airplane:
         plt.xlabel("Posición en la envergadura")
         plt.ylabel("Momento [N*m]")
         plt.show()
+
+
+
 
 
     def _polinomial(self, x : float | np.ndarray, a: list[float]) -> float:

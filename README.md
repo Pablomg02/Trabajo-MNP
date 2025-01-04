@@ -5,6 +5,9 @@ Este código permite llevar a cabo la optimización de la distribución de suste
 - En la carpeta `kernel` se encuentra el codigo Fortran necesario para llevar a cabo la integración.
 - ***El código principal y necesario para visualizar los resultados se ejecuta en `main.ipynb`***
 
+Además, en este repositorio también se encuentran las dos implementaciones puras de Gauss-Chebyshev en sus dos tipos, en las carpetas
+`GC_PrimerTipo` y `GC_SegundoTipo`. Es recomendable utilizar eso para saber cómo se implementó el módulo en `src`.
+
 ## Instalación
 Dado que se trata de una libreria de Fortran en Python y no cuenta con un instalador de la libreria automatico, es necesario
 seguir los siguientes pasos en la terminal para utilizarla.
