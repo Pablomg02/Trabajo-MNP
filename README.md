@@ -3,6 +3,7 @@
 Este código permite llevar a cabo la optimización de la distribución de sustentación en un ala.
 - En la carpeta `src` se encuentra todo el codigo fuente utilizado
 - En la carpeta `kernel` se encuentra el codigo Fortran necesario para llevar a cabo la integración.
+- ***El código principal y necesario para visualizar los resultados se ejecuta en `main.ipynb`***
 
 ## Instalación
 Dado que se trata de una libreria de Fortran en Python y no cuenta con un instalador de la libreria automatico, es necesario
